@@ -12,11 +12,10 @@ app.use(express.json());
 // routes
 app.use("/api/v1/tasks", tasks);
 
-// app.get('/api/v1/tasks')     --get all the tasks
-// app.post('/api/v1/tasks/:id') --- create a new task
-// app.get('/api/v1/tasks/:id')  --- get a task   ---get single task
-// app.patch('/api/v1/tasks/:id')  --- update a task
-// app.delete('/api/v1/tasks/:id')  --- delete a task
+// not found handler
+app.use("**", (req, res) => {
+  res.status(404).send({ message: "Route not found" });
+});
 
 const port = 3000;
 
